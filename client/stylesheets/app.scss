@@ -1,0 +1,143 @@
+//$positive: #1ab394; // vert inspinia
+$positive: #00b5d8; // bleu bouygues
+$balanced: #05d0a6; // vert bouygues
+$royal: #0065a6;
+$loading-font-size: 22px;
+$grisclair: #e7eaec;
+$grisfonce: #b5b5b5;
+
+// pas joli du tout .. il faut  migrer en 1.2 ...
+// coucou
+
+@import '../../../../vrooms/.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
+@import '../../../../vrooms/.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
+
+.ionic-body.platform-android {
+  font-family: "Roboto", sans-serif;
+  background:  $grisclair;
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .tab-item {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+.ion-slide {
+  text-align: center;
+  padding-top: 200px;
+
+  &.dark-bg {
+    h3 {
+      color: #fff;
+    }
+  }
+}
+
+.popover {
+  height: auto;
+}
+
+.content {
+  background: $grisclair;
+}
+
+
+.selected {
+  background: $grisfonce;
+}
+
+.item-button-left, .item-button-right {
+  button {
+    top: 16px !important;
+  }
+}
+
+/* Intimeline */
+.timeline-item{
+  padding: 0px 20px 0px 20px;
+  margin: 0px;
+}
+.timeline-item .creneau {
+  text-align: center;
+  position: relative;
+  padding-top: 20px;
+}
+.timeline-item .ressource {
+  text-align: center;
+}
+/*
+.timeline-item .content:hover {
+  background: #C6c6c6;
+}
+*/
+.timeline-item .isActive {
+  background: $grisclair;
+}
+/*
+.timeline-item .content:active {
+  background: #C6c6c6;
+}
+*/
+
+.item-badge-left {
+  padding-left: 84px;
+}
+
+.badge-left {
+  left: 11px;
+  width: 60px;
+}
+
+.rooms-block {
+
+  p {
+    display: inline;
+  }
+  .room-item{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 14px;
+  }
+  .room-icon{
+    font-size: 26px;
+  }
+  .room-badge{
+  top: 8px;
+  }
+}
+
+.room-item-notselected{
+    background:  $grisclair;
+}
+
+.room-item-selected{
+  background:  $grisfonce;
+}
+
+
+.row-nopadding{
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+}
+
+.littleFont{
+  font-size: 12px !important;
+}
+
+.title-image {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.fontblue{
+  color: $royal !important;
+}
+
+.item-input {
+  padding-right: 16px;
+}

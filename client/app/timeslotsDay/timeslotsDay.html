@@ -1,0 +1,92 @@
+<template name="timeslotsDay">
+    <!-- header bouton gauche -->
+    {{#contentFor "headerButtonLeft"}}
+        <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+            {{#if isAndroid}}
+                {{> ionIcon icon='android-more-vertical'}}
+            {{else}}
+                {{> ionIcon icon='navicon'}}
+            {{/if}}
+        </button>
+    {{/contentFor}}
+
+    <!-- header Titre -->
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Disponibilités</h1>
+        <img class="title-image" src="/logos-40-transparent.png">
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionSubheaderBar class=""}}
+            {{#with daySetting}}
+                {{#if isNotFirstDay}}
+                    <a href="/timeslotsDay/{{previousDay}}"
+                       class="button fontblue icon-left ion-arrow-left-b button-clear button-dark">Préc.</a>
+                {{/if}}
+                <h2 class="title">{{ formatedDayProcessed }}</h2>
+                {{#if isNotLastDay}}
+                    <a href="/timeslotsDay/{{nextDay}}"
+                       class="button fontblue icon-right ion-arrow-right-b button-clear button-dark">Suiv.</a>
+                {{/if}}
+            {{/with}}
+        {{/ionSubheaderBar}}
+    <div id="hammerDiv">
+        {{#ionContent}}
+            <div class="padding">
+                {{#ionList}}
+                    {{#each timeslotsList}}
+                        {{#ionItem  class="timeline-item" buttonRight=false avatar=false}}
+                            <div class="row row-nopadding">
+                                <div class="col creneau"><h2>{{ shortTimeslot horaire }}</h2></div>
+                                <div class="col ressource item-salle {{#if hasToShowed "listSalle"}}isActive{{/if}}">
+                                    <h2>{{iNbSalle}}</h2>
+                                    <p>Salles</p>
+                                </div>
+                                <div class="col ressource item-box {{#if hasToShowed "listBox"}}isActive{{/if}}">
+                                    <h2>{{iNbBox}}</h2>
+                                    <p>Box</p>
+                                </div>
+                                <div class="col ressource item-autre {{#if hasToShowed "listAutre"}}isActive{{/if}}">
+                                    <h2>{{iNbAutre}}</h2>
+                                    <p>Autres</p>
+                                </div>
+                            </div>
+                        {{/ionItem}}
+
+                        {{> roomsList ressourceType="listSalle"}}
+                        {{> roomsList ressourceType="listBox"}}
+                        {{> roomsList ressourceType="listAutre"}}
+
+                    {{/each}}
+
+                {{/ionList}}
+            </div>
+
+        {{/ionContent}}
+        </div>
+        {{#ionFooterBar class=""}}
+            <h4 class="title littleFont"><p>Dernière mise à jour {{infoMaj}}</p></h4>
+        {{/ionFooterBar}}
+    {{/ionView}}
+</template>
+
+
+<template name="roomsList">
+    {{#if hasToShowed ..}}
+        <div class="rooms-block">
+            {{#each listeRooms}}
+                {{ decodeSalleName }}
+                <a class="item room-item item-icon-right item-badge-left {{Selected}}" href="#">
+                    <span class="badge room-badge badge-{{badgeColor}} badge-left">{{place}}</span>
+                    {{infoName}}{{#if demiheure}} <p>(Décalage 30min)</p> {{/if}}
+                {{#if isRoomBooked}}
+                    <i class="icon fontblue room-icon ion-checkmark-circled"></i>
+                {{else}}
+                    <i class="icon fontblue room-icon ion-ios-plus-outline uploadCalendar"></i>
+                {{/if}}
+
+                </a>
+            {{/each}}
+        </div>
+    {{/if}}
+</template>

@@ -1,0 +1,49 @@
+<template name="contactForm">
+    {{#contentFor "headerButtonLeft"}}
+        {{>ionNavBackButton path="home"}}
+    {{/contentFor}}
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Nous contacter</h1>
+        <img class="title-image" src="/logos-40-transparent.png">
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            <div class="list at-form">
+
+                <div class="at-pwd-form">
+                    <form role="form" id="at-pwd-form" novalidate="" action="#" method="POST">
+
+                        <div class="at-input item item-input item-text-wrap item-stacked-label">
+                            <label class="input-label" for="at-field-password">
+                                votre feedback
+                            </label>
+
+                            <textarea rows="5" id="at-field-password" name="at-field-password"
+                                      placeholder="  ..."></textarea>
+                        </div>
+
+                        <div class="at-input item item-input item-text-wrap item-stacked-label">
+                            <label class="input-label" for="at-field-email">
+                                Votre email
+                            </label>
+
+                            <input type="email" id="at-field-email" name="at-field-email" placeholder="Email"
+                                   autocapitalize="none" autocorrect="off">
+                        </div>
+
+                        <div class="padding">
+                            <button type="submit" class="at-btn button button-royal button-block submit" id="at-btn">
+                                Soumettre
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        {{/ionContent}}
+        {{#ionFooterBar class=""}}
+            <h4 class="title littleFont"><p>Version 1.0.5</p></h4>
+        {{/ionFooterBar}}
+    {{/ionView}}
+</template>

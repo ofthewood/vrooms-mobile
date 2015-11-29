@@ -1,0 +1,142 @@
+<template name="timeslots">
+    {{#contentFor "headerButtonLeft"}}
+        <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+            {{#if isAndroid}}
+                {{> ionIcon icon='android-more-vertical'}}
+            {{else}}
+                {{> ionIcon icon='navicon'}}
+            {{/if}}
+        </button>
+    {{/contentFor}}
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Disponibilites3.11</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionSubheaderBar}}
+            <h2 class="title">Aujourdhui</h2>
+        {{/ionSubheaderBar}}
+
+        {{#ionContent}}
+            <div class="padding">
+                {{#ionList}}
+                    {{#each timeslotsList}}
+
+                        {{#if isNewDay}}
+                            {{#ionItem class="item-divider" buttonRight=false avatar=false}}
+                                <h2>{{ formatedDay horaire }}</h2>
+
+                            {{/ionItem}}
+                        {{/if}}
+                        {{#ionItem  class="timeline-item" buttonRight=false avatar=false}}
+                            <div class="row">
+                                <div class="col"><h2>{{ shortTimeslot horaire }}</h2></div>
+                                <div class="col content item-salle"><h2>{{iNbSalle}}</h2>
+                                    <p>Salles</p>
+                                </div>
+                                <div class="col content item-box"><h2>{{iNbBox}}</h2>
+                                    <p>Box</p>
+                                </div>
+                                <div class="col content item-autre"><h2>{{iNbAutre}}</h2>
+                                    <p>Autres</p>
+                                </div>
+                            </div>
+                        {{/ionItem}}
+
+                        {{#if hasToShowed "salle"}}
+                            <div class="ibox-content ibox-freerooms">
+                                {{#each listSalle }}
+                                    {{ decodeSalleName }}
+                                    <a class="item item-icon-right item-badge-left" href="#">
+                                        <span class="badge badge-{{badgeColor}} badge-left">{{place}}</span>
+                                        {{infoName}}
+                                        <i class="icon ion-ios-arrow-right uploadCalendar"></i>
+                                    </a>
+                                {{/each}}
+                            </div>
+                        {{/if}}
+                        {{#if hasToShowed "box"}}
+                            <div class="ibox-content ibox-freerooms">
+                                {{#each listBox }}
+                                    {{ decodeSalleName }}
+                                    <a class="item item-icon-right item-badge-left" href="#">
+                                        <span class="badge badge-{{badgeColor}} badge-left">{{place}}</span>
+                                        {{infoName}}
+                                        <i class="icon ion-ios-arrow-right uploadCalendar"></i>
+                                    </a>
+                                {{/each}}
+                            </div>
+                        {{/if}}
+                        {{#if hasToShowed "autre"}}
+                            <div class="ibox-content ibox-freerooms">
+                                {{#each listAutre }}
+                                    {{ decodeSalleName }}
+                                    <a class="item item-icon-right item-badge-left" href="#">
+                                        <span class="badge badge-{{badgeColor}} badge-left">{{place}}</span>
+                                        {{infoName}}
+                                        <i class="icon ion-ios-arrow-right uploadCalendar"></i>
+                                    </a>
+                                {{/each}}
+                            </div>
+                        {{/if}}
+
+                    {{/each}}
+
+                {{/ionList}}
+            </div>
+        {{/ionContent}}
+
+        {{#ionFooterBar class="bar-dark"}}
+            <h1 class="title">Footer</h1>
+        {{/ionFooterBar}}
+    {{/ionView}}
+
+</template>
+
+<template name="timeslotsold">
+
+    {{#contentFor "headerButtonLeft"}}
+        <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+            {{#if isAndroid}}
+                {{> ionIcon icon='android-more-vertical'}}
+            {{else}}
+                {{> ionIcon icon='navicon'}}
+            {{/if}}
+        </button>
+    {{/contentFor}}
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Technopole3.3</h1>
+    {{/contentFor}}
+
+    <!-- ff -->
+    {{#ionView}}
+        {{#ionContent}}
+            {{#ionSlideBox}}
+                {{#each ndays}}
+                    {{#ionSlide class="light-bg"}}
+
+                        {{#ionList}}
+                            {{#each times}}
+                                {{#ionItem buttonRight=true avatar=true}}
+                                    <img src="https://randomuser.me/api/portraits/thumb/men/27.jpg">
+
+                                    <h2>John Smith</h2>
+
+                                    <p>
+                                        (555) 555-1212
+                                    </p>
+                                    <button class="button button-positive">{{> ionIcon icon="ios-telephone"}}</button>
+
+                                {{/ionItem}}
+
+                            {{/each}}
+
+                        {{/ionList}}
+                    {{/ionSlide}}
+                {{/each}}
+            {{/ionSlideBox}}
+        {{/ionContent}}
+
+    {{/ionView}}
+
+</template>

@@ -1,0 +1,48 @@
+<!-- doc dispo la ... http://ionicframework.com/docs/api/directive/ionSideMenus/ -->
+<template name="layoutVrooms">
+    {{#ionBody}}
+
+        {{#ionSideMenuContainer}}
+
+            {{#ionSideMenus}}
+                <!-- Menu de gauche -->
+                {{#ionSideMenu}}
+                    <div class="bar bar-header bar-balanced">
+                        <h1 class="title">Le technopole</h1>
+                    </div>
+                    <div class="content has-header">
+                        <div class="list">
+                            <a href="{{pathFor 'home'}}" class="item item-icon-right" data-ion-menu-close>
+                                Disponibilités {{> ionIcon icon="ios-arrow-right"}}
+                            </a>
+                            <a href="{{pathFor 'contactForm'}}" class="item item-icon-right" data-ion-menu-close>
+                                Nous contacter {{> ionIcon icon="ios-arrow-right"}}
+                            </a>
+                            {{#if isDevEnv}}
+                                <a href="{{pathFor 'index'}}" class="item item-icon-right" data-ion-menu-close>
+                                    index {{> ionIcon icon="ios-arrow-right"}}
+                                </a>
+
+                                <div class="item item-icon-right" data-ion-menu-close>
+                                    Close Me {{> ionIcon icon="ios-arrow-right"}}
+                                    ion-ios-arrow-back
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/ionSideMenu}}
+            {{/ionSideMenus}}
+
+            <!-- Page Principale -->
+            {{#ionSideMenuContent}}
+                <!-- Top of the screen  -->
+                {{> ionNavBar class="bar-balanced"}}
+
+                <!--  Content  -->
+                {{#ionNavView}}
+                    {{> yield}}
+                {{/ionNavView}}
+            {{/ionSideMenuContent}}
+        {{/ionSideMenuContainer}}
+    {{/ionBody}}
+</template>
